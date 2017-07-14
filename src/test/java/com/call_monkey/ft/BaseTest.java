@@ -1,7 +1,10 @@
 package com.call_monkey.ft;
 
 import com.call_monkey.ft.factory.WebDriverFactory;
+import com.call_monkey.ft.pages.Login.LoginPage;
 import com.call_monkey.ft.pages.PageBuilder;
+import com.call_monkey.ft.pages.Registrasion.AccountRegistrationPage;
+import com.call_monkey.ft.pages.Registrasion.CallCentreRegistrationPage;
 import com.call_monkey.ft.utils.SauceLabsListener;
 import com.saucelabs.common.SauceOnDemandAuthentication;
 import com.saucelabs.common.SauceOnDemandSessionIdProvider;
@@ -24,6 +27,9 @@ public abstract class BaseTest implements SauceOnDemandSessionIdProvider, SauceO
     /**
      * Define variables for all pages
      */
+    public LoginPage loginPage;
+    public AccountRegistrationPage accountRegistrationPage;
+    public CallCentreRegistrationPage callCentreRegistrationPage;
 
     private   ThreadLocal<WebDriver> driver;
 
@@ -63,7 +69,12 @@ public abstract class BaseTest implements SauceOnDemandSessionIdProvider, SauceO
         driver.set(WebDriverFactory.createWebDriver());
         // Define page builders, example below
         // homePage = PageBuilder.page(HomePage.class, webDriver()).build();
+        loginPage = PageBuilder.page(LoginPage.class, webDriver()).build();
+        accountRegistrationPage = PageBuilder.page(AccountRegistrationPage.class, webDriver()).build();
+        callCentreRegistrationPage = PageBuilder.page(CallCentreRegistrationPage.class, webDriver()).build();
+
     }
+
 
     @AfterTest(alwaysRun = true)
     public void closeBrowser() {

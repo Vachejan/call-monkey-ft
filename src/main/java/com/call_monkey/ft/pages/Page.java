@@ -5,15 +5,12 @@ import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URL;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.*;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
@@ -23,25 +20,7 @@ import java.util.stream.Collectors;
  *
  * @author arsen.
  */
-public abstract class Page {
-
-    protected static final By HAMB_MENU_SELECTOR = By.cssSelector("[data-qa-ref=humburger-menu]");
-    protected static final By PAGE_HEADER_SELECTOR = By.cssSelector("[data-qa-ref=page-title]");
-    protected static final By NOTIF_BAR_SELECTOR = By.cssSelector("[data-qa-ref=notification-bar]");
-    protected static final By DIALOG_SELECTOR = By.cssSelector("[data-qa-ref=edit-popup-title]");
-
-    @FindBy(css = "[data-qa-ref=profile-icon]")
-    private WebElement profileIcon;
-
-    @FindBy(css = "[data-qa-ref=hamburger-items]")
-    private List<WebElement> hamburgerItems;
-
-    @FindBy(css = "[data-qa-ref=confirm-popup-ok-button]")
-    protected WebElement confirmPopupOkBtn;
-
-    @FindBy(css = "[data-qa-ref=confirm-popup]")
-    protected WebElement confirmPopup;
-
+public abstract class Page{
     private WebDriver webDriver;
     private String siteUrl;
     private int maxDelayTime;
@@ -77,22 +56,6 @@ public abstract class Page {
 
     protected void open(String pagePath, String pageTitle, Integer maxDelayTime) {
         open(pagePath, pageTitle, maxDelayTime, true);
-    }
-
-    public void clickOnProfileIcon() {
-        clickOnButton(profileIcon);
-        waitElement(1);
-    }
-
-    public void clickOnHamburgerItem(String hamburgerItemText) {
-        clickOnProfileIcon();
-        for (WebElement item : hamburgerItems) {
-            if (item.getText().contains(hamburgerItemText)) {
-                clickOnButton(item);
-                return;
-            }
-        }
-
     }
 
     private void open(String pagePath, String pageTitle, Integer maxDelayTime, boolean checkTitle) {
@@ -272,113 +235,6 @@ public abstract class Page {
     }
 
     /**
-     * Function to wait for Page opening by page title
-     *
-     * @param pageTitle
-     */
-    protected void waitForPageOpening(String pageTitle) {
-
-        ExpectedCondition<Boolean> expectedCondition = d -> {
-            boolean isFound = false;
-            try {
-                WebElement realPageTitle = webDriver.findElement(PAGE_HEADER_SELECTOR);
-                if (pageTitle.equals(realPageTitle.getText())) {
-                    isFound = true;
-                }
-
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } finally {
-
-            }
-
-            return isFound;
-        };
-
-        waitByExpectedCondition(expectedCondition, 20);
-    }
-
-    /**
-     * function to wait for dialog opening by title
-     * @param dialogTitle
-     */
-    protected void waitForDialogOpening(String dialogTitle) {
-        ExpectedCondition<Boolean> expectedCondition = d -> {
-            boolean isFound = false;
-            try {
-                WebElement realDialog = webDriver.findElement(DIALOG_SELECTOR);
-                String realTitle = realDialog.getText();
-                if (dialogTitle.equals(realTitle)) {
-                    isFound = true;
-                }
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } finally {
-            }
-            return isFound;
-        };
-        waitByExpectedCondition(expectedCondition, 20);
-    }
-
-    /**
-     * Function to wait until input field is filled.
-     *
-     * @param locator
-     * @throws InterruptedException
-     */
-    protected void waitForInputFilled(By locator) {
-
-        ExpectedCondition<Boolean> expectedCondition = d -> {
-            boolean isFound = false;
-            try {
-                WebElement inputField = webDriver.findElement(locator);
-                String text = inputField.getAttribute("value");
-                if (!text.isEmpty()) {
-                    isFound = true;
-                }
-
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } finally {
-
-            }
-
-            return isFound;
-        };
-
-        waitByExpectedCondition(expectedCondition, 15);
-    }
-
-
-    public void waitForEditorLoadingHide() {
-
-        ExpectedCondition<Boolean> expectedCondition = d -> {
-            boolean isFound = false;
-            try {
-                WebElement loadIcon = webDriver.findElement(By.cssSelector("span.b-wait"));
-                if (loadIcon != null) {
-                    WebDriverWait wait = new WebDriverWait(webDriver, 60);
-                    wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("span.b-wait")));
-                    isFound = true;
-                }
-
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } finally {
-
-            }
-
-            return isFound;
-        };
-
-        waitByExpectedCondition(expectedCondition, 30);
-    }
-
-    /**
      * Opens page by given URL.
      *
      * @param url page address
@@ -509,7 +365,7 @@ public abstract class Page {
      * @param attribute Atribute name
      * @return String
      */
-    public String getAtribute(WebElement element, String attribute) {
+    public String getAttribute(WebElement element, String attribute) {
         return element.getAttribute(attribute);
     }
 
@@ -576,15 +432,6 @@ public abstract class Page {
         }
     }
 
-    public void closeNotifBar() {
-        try {
-            WebElement notifbar = webDriver.findElement(By.cssSelector("span.b-notification--button"));
-            clickOnButton(notifbar);
-        } catch (Exception e) {
-
-        }
-    }
-
 
     /**
      * Select item in dropdown by item name
@@ -644,44 +491,6 @@ public abstract class Page {
 
     public void setWebDriver(WebDriver webDriver) {
         this.webDriver = webDriver;
-    }
-
-
-    /**
-     * function multiplies gift price to gift amount and returns total gifts' price
-     *
-     * @param giftPrice
-     * @param giftAmount
-     * @return
-     */
-    public String getTotalProductsPrice(String giftPrice, int giftAmount) {
-        giftPrice = giftPrice.replace(",", ".");
-        NumberFormat formatTotalGiftPrice = new DecimalFormat("#0.00");
-        double totalGiftCost = Double.parseDouble(giftPrice) * giftAmount;
-        String totalGiftPrice = formatTotalGiftPrice.format(totalGiftCost);
-        totalGiftPrice = totalGiftPrice.replace(".", ",");
-        return totalGiftPrice;
-    }
-
-    public String actionWithToPrices(String price1, String price2, String actionSign) {
-        double result = 0;
-        price1 = price1.replace(",", ".");
-        price2 = price2.replace(",", ".");
-        NumberFormat formatPrice = new DecimalFormat("#0.00");
-        switch (actionSign) {
-            case "*": result = Double.parseDouble(price1) * Double.parseDouble(price2);
-                      break;
-
-            case "+": result = Double.parseDouble(price1) + Double.parseDouble(price2);
-                      break;
-
-            case "-": result = Double.parseDouble(price1) - Double.parseDouble(price2);
-                      break;
-        }
-
-        String finalresult = formatPrice.format(result);
-        finalresult = finalresult.replace(".", ",");
-        return finalresult;
     }
 
     public void waitForElementAppearsAndHides(By locator) {
