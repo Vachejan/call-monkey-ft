@@ -8,52 +8,35 @@ import org.testng.annotations.Test;
  */
 public class NegativeConfirmPasswordTextBoxTest extends BaseTest {
 
-    @Test
-    public void negativeConfirmPasswordTeste_ConfirmePasswordEampty() throws Exception {
-
+    public void confirmPassword(String strConfirmPassword) {
         String strRightNameCompany = "Valod";
         String strWrongNameEmail = "Valodik@mail.ru";
         String strRightNamePassword = "janValodikjan123";
-        String strWrongNameConfirmPassword = "";
 
         accountRegistrationPage.open();
         accountRegistrationPage.fillCompnyAddress(strRightNameCompany);
         accountRegistrationPage.fillEmailAddress(strWrongNameEmail);
         accountRegistrationPage.fillPassword(strRightNamePassword);
-        accountRegistrationPage.fillConfirmPassword(strWrongNameConfirmPassword);
+        accountRegistrationPage.fillConfirmPassword(strConfirmPassword);
         accountRegistrationPage.clickCreateMyAccountButton();
+    }
+
+
+    @Test
+    public void negativeConfirmPasswordTeste_ConfirmePasswordEampty() throws Exception {
+        confirmPassword("");
+        accountRegistrationPage.checkIfConfirmPasswordMessigeIsWrong();
+
     }
 
     @Test
     public void negativeConfirmPasswordTeste_() throws Exception {
-
-        String strRightNameCompany = "Valod";
-        String strWrongNameEmail = "Valodik@mail.ru";
-        String strRightNamePassword = "janValodikjan123";
-        String strWrongNameConfirmPassword = "janvalodikjan123";
-
-        accountRegistrationPage.open();
-        accountRegistrationPage.fillCompnyAddress(strRightNameCompany);
-        accountRegistrationPage.fillEmailAddress(strWrongNameEmail);
-        accountRegistrationPage.fillPassword(strRightNamePassword);
-        accountRegistrationPage.fillConfirmPassword(strWrongNameConfirmPassword);
-        accountRegistrationPage.clickCreateMyAccountButton();
+        confirmPassword("janvalodikjan123");
     }
 
     @Test
     public void negativeConfirmPasswordTeste_1() throws Exception {
-
-        String strRightNameCompany = "Valod";
-        String strWrongNameEmail = "Valodik@mail.ru";
-        String strRightNamePassword = "janValodikjan123";
-        String strWrongNameConfirmPassword = " ";
-
-        accountRegistrationPage.open();
-        accountRegistrationPage.fillCompnyAddress(strRightNameCompany);
-        accountRegistrationPage.fillEmailAddress(strWrongNameEmail);
-        accountRegistrationPage.fillPassword(strRightNamePassword);
-        accountRegistrationPage.fillConfirmPassword(strWrongNameConfirmPassword);
-        accountRegistrationPage.clickCreateMyAccountButton();
+        confirmPassword(" ");
     }
 
 }

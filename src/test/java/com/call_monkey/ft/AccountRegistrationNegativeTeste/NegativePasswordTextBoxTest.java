@@ -8,106 +8,51 @@ import org.testng.annotations.Test;
  */
 public class NegativePasswordTextBoxTest extends BaseTest {
 
-    @Test
-    public void negativePasswordNameTestEmpatyName() throws Exception {
+    public void password(String strPassword){
 
         String strRightNameCompany = "Valod";
         String strRightNameEmail = "Valodik@mail.ru";
-        String strWrongNamePassword = "";
 
         accountRegistrationPage.open();
         accountRegistrationPage.fillCompnyAddress(strRightNameCompany);
         accountRegistrationPage.fillEmailAddress(strRightNameEmail);
-        accountRegistrationPage.fillPassword(strWrongNamePassword);
-        accountRegistrationPage.fillConfirmPassword(strWrongNamePassword);
+        accountRegistrationPage.fillPassword(strPassword);
+        accountRegistrationPage.fillConfirmPassword(strPassword);
         accountRegistrationPage.clickCreateMyAccountButton();
+    }
+
+    @Test
+    public void negativePasswordNameTestEmpatyName() throws Exception {
+      password("");
     }
 
     @Test
     public void negativePasswordNameTest_1() throws Exception {
-
-        String strRightNameCompany = "Valod";
-        String strRightNameEmail = "Valodik@mail.ru";
-        String strWrongNamePassword = "JJjj1 ";
-
-        accountRegistrationPage.open();
-        accountRegistrationPage.fillCompnyAddress(strRightNameCompany);
-        accountRegistrationPage.fillEmailAddress(strRightNameEmail);
-        accountRegistrationPage.fillPassword(strWrongNamePassword);
-        accountRegistrationPage.fillConfirmPassword(strWrongNamePassword);
-        accountRegistrationPage.clickCreateMyAccountButton();
+        password("JJjj1 ");
     }
 
     @Test
     public void negativePasswordNameTest_2() throws Exception {
-
-        String strRightNameCompany = "Valod";
-        String strRightNameEmail = "Valodik@mail.ru";
-        String strWrongNamePassword = "asdfghjk";
-
-        accountRegistrationPage.open();
-        accountRegistrationPage.fillCompnyAddress(strRightNameCompany);
-        accountRegistrationPage.fillEmailAddress(strRightNameEmail);
-        accountRegistrationPage.fillPassword(strWrongNamePassword);
-        accountRegistrationPage.fillConfirmPassword(strWrongNamePassword);
-        accountRegistrationPage.clickCreateMyAccountButton();
+       password("asdfghjk");
     }
 
     @Test
     public void negativePasswordNameTest_3() throws Exception {
-
-        String strRightNameCompany = "Valod";
-        String strRightNameEmail = "Valodik@mail.ru";
-        String strWrongNamePassword = "123456789";
-
-        accountRegistrationPage.open();
-        accountRegistrationPage.fillCompnyAddress(strRightNameCompany);
-        accountRegistrationPage.fillEmailAddress(strRightNameEmail);
-        accountRegistrationPage.fillPassword(strWrongNamePassword);
-        accountRegistrationPage.fillConfirmPassword(strWrongNamePassword);
-        accountRegistrationPage.clickCreateMyAccountButton();
+        password("123456789");
     }
+
     @Test
     public void negativePasswordNameTest_4() throws Exception {
-
-        String strRightNameCompany = "Valod";
-        String strRightNameEmail = "Valodik@mail.ru";
-        String strWrongNamePassword = "janjekojan123";
-
-        accountRegistrationPage.open();
-        accountRegistrationPage.fillCompnyAddress(strRightNameCompany);
-        accountRegistrationPage.fillEmailAddress(strRightNameEmail);
-        accountRegistrationPage.fillPassword(strWrongNamePassword);
-        accountRegistrationPage.fillConfirmPassword(strWrongNamePassword);
-        accountRegistrationPage.clickCreateMyAccountButton();
+        password("janjekojan123");
     }
+
     @Test
     public void negativePasswordNameTest_5() throws Exception {
-
-        String strRightNameCompany = "Valod";
-        String strRightNameEmail = "Valodik@mail.ru";
-        String strWrongNamePassword = "JJjjjkkl ";
-
-        accountRegistrationPage.open();
-        accountRegistrationPage.fillCompnyAddress(strRightNameCompany);
-        accountRegistrationPage.fillEmailAddress(strRightNameEmail);
-        accountRegistrationPage.fillPassword(strWrongNamePassword);
-        accountRegistrationPage.fillConfirmPassword(strWrongNamePassword);
-        accountRegistrationPage.clickCreateMyAccountButton();
+        password("JJjjjkkl");
     }
 
     @Test
     public void negativePasswordNameTest_6() throws Exception {
-
-        String strRightNameCompany = "Valod";
-        String strRightNameEmail = "Valodik@mail.ru";
-        String strWrongNamePassword = "////***///";
-
-        accountRegistrationPage.open();
-        accountRegistrationPage.fillCompnyAddress(strRightNameCompany);
-        accountRegistrationPage.fillEmailAddress(strRightNameEmail);
-        accountRegistrationPage.fillPassword(strWrongNamePassword);
-        accountRegistrationPage.fillConfirmPassword(strWrongNamePassword);
-        accountRegistrationPage.clickCreateMyAccountButton();
+       password("////***///");
     }
 }

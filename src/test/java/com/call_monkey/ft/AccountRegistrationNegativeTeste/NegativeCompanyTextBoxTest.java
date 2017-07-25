@@ -42,17 +42,8 @@ public class NegativeCompanyTextBoxTest extends BaseTest {
 
     @Test
     public void negativeCompanyNameTesteNameMixLeatters() throws Exception {
-
-        String strWrongNameCompany = "V..;l{{]";;
-        String strRightNameEmail = "Valodik@mail.ru";
-        String strRightNamePassword = "janValodikjan123";
-
-        accountRegistrationPage.open();
-        accountRegistrationPage.fillCompnyAddress(strWrongNameCompany);
-        accountRegistrationPage.fillEmailAddress(strRightNameEmail);
-        accountRegistrationPage.fillPassword(strRightNamePassword);
-        accountRegistrationPage.fillConfirmPassword(strRightNamePassword);
-        accountRegistrationPage.clickCreateMyAccountButton();
+        companyName("V..;l{{]");
+        accountRegistrationPage.checkIfCompanyIsWrong();
     }
 
 }

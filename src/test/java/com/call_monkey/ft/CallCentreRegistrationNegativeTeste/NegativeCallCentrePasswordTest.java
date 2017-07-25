@@ -8,126 +8,57 @@ import org.testng.annotations.Test;
  */
 public class NegativeCallCentrePasswordTest extends BaseTest {
 
-    @Test
-    public void negativeCallCentrePasswordTest_Eampty() throws Exception {
+    public void callCentrePassword(String strPassword) {
 
         String strRightNameEmail = "Valodik@mail.ru";
         String strRightNameCompany = "Valod";
-        String strWrongNamePassword = "";
 
         accountRegistrationPage.open();
         accountRegistrationPage.fillCompnyAddress(strRightNameCompany);
         accountRegistrationPage.fillEmailAddress(strRightNameEmail);
-        accountRegistrationPage.fillPassword(strWrongNamePassword);
-        accountRegistrationPage.fillConfirmPassword(strWrongNamePassword);
+        accountRegistrationPage.fillPassword(strPassword);
+        accountRegistrationPage.fillConfirmPassword(strPassword);
         accountRegistrationPage.clickCreateMyAccountButton();
+    }
+
+    @Test
+    public void negativeCallCentrePasswordTest_Eampty() throws Exception {
+        callCentrePassword("");
     }
 
     @Test
     public void negativeCallCentrePasswordTest_1() throws Exception {
-
-        String strRightNameCompany = "Valod";
-        String strRightNameEmail = "Valodik@mail.ru";
-        String strWrongNamePassword = "        ";
-
-        accountRegistrationPage.open();
-        accountRegistrationPage.fillCompnyAddress(strRightNameCompany);
-        accountRegistrationPage.fillEmailAddress(strRightNameEmail);
-        accountRegistrationPage.fillPassword(strWrongNamePassword);
-        accountRegistrationPage.fillConfirmPassword(strWrongNamePassword);
-        accountRegistrationPage.clickCreateMyAccountButton();
+        callCentrePassword("        ");
     }
 
     @Test
     public void negativeCallCentrePasswordTest_2() throws Exception {
-
-        String strRightNameCompany = "Valod";
-        String strRightNameEmail = "Valodik@mail.ru";
-        String strWrongNamePassword = "JJjj1";
-
-        accountRegistrationPage.open();
-        accountRegistrationPage.fillCompnyAddress(strRightNameCompany);
-        accountRegistrationPage.fillEmailAddress(strRightNameEmail);
-        accountRegistrationPage.fillPassword(strWrongNamePassword);
-        accountRegistrationPage.fillConfirmPassword(strWrongNamePassword);
-        accountRegistrationPage.clickCreateMyAccountButton();
+        callCentrePassword("JJjj1");
     }
 
     @Test
     public void negativeCallCentrePasswordTest_3() throws Exception {
-
-        String strRightNameCompany = "Valod";
-        String strRightNameEmail = "Valodik@mail.ru";
-        String strWrongNamePassword = "sdssaqww";
-
-        accountRegistrationPage.open();
-        accountRegistrationPage.fillCompnyAddress(strRightNameCompany);
-        accountRegistrationPage.fillEmailAddress(strRightNameEmail);
-        accountRegistrationPage.fillPassword(strWrongNamePassword);
-        accountRegistrationPage.fillConfirmPassword(strWrongNamePassword);
-        accountRegistrationPage.clickCreateMyAccountButton();
+        callCentrePassword("sdssaqww");
     }
 
     @Test
     public void negativeCallCentrePasswordTest_4() throws Exception {
-
-        String strRightNameCompany = "Valod";
-        String strWrongNamePassword = "123456789";
-        String strRightNameEmail = "Valodik@mail.ru";
-
-        accountRegistrationPage.open();
-        accountRegistrationPage.fillCompnyAddress(strRightNameCompany);
-        accountRegistrationPage.fillEmailAddress(strRightNameEmail);
-        accountRegistrationPage.fillPassword(strWrongNamePassword);
-        accountRegistrationPage.fillConfirmPassword(strWrongNamePassword);
-        accountRegistrationPage.clickCreateMyAccountButton();
+        callCentrePassword("123456789");
     }
 
     @Test
     public void negativeCallCentrePasswordTest_5() throws Exception {
-
-        String strRightNameEmail = "Valodik@mail.ru";
-        String strRightNameCompany = "Valod";
-        String strWrongNamePassword = "janjekojan123";
-
-        accountRegistrationPage.open();
-        accountRegistrationPage.fillCompnyAddress(strRightNameCompany);
-        accountRegistrationPage.fillEmailAddress(strRightNameEmail);
-        accountRegistrationPage.fillPassword(strWrongNamePassword);
-        accountRegistrationPage.fillConfirmPassword(strWrongNamePassword);
-        accountRegistrationPage.clickCreateMyAccountButton();
+        callCentrePassword("janjekojan123");
     }
 
     @Test
     public void negativeCallCentrePasswordTest_6() throws Exception {
-
-        String strRightNameCompany = "Valod";
-        String strRightNameEmail = "Valodik@mail.ru";
-        String strWrongNamePassword = "JJJjjjkl";
-
-        accountRegistrationPage.open();
-        accountRegistrationPage.fillCompnyAddress(strRightNameCompany);
-        accountRegistrationPage.fillEmailAddress(strRightNameEmail);
-        accountRegistrationPage.fillPassword(strWrongNamePassword);
-        accountRegistrationPage.fillConfirmPassword(strWrongNamePassword);
-        accountRegistrationPage.clickCreateMyAccountButton();
+        callCentrePassword("JJJjjjkl");
     }
 
     @Test
     public void negativeCallCentrePasswordTest_7() throws Exception {
-
-        String strRightNameCompany = "Valod";
-        String strRightNameEmail = "Valodik@mail.ru";
-        String strWrongNamePassword = "/////****777";
-
-        accountRegistrationPage.open();
-        accountRegistrationPage.fillCompnyAddress(strRightNameCompany);
-        accountRegistrationPage.fillEmailAddress(strRightNameEmail);
-        accountRegistrationPage.fillPassword(strWrongNamePassword);
-        accountRegistrationPage.fillConfirmPassword(strWrongNamePassword);
-        accountRegistrationPage.clickCreateMyAccountButton();
+        callCentrePassword("/////****777");
     }
-
-
 
 }

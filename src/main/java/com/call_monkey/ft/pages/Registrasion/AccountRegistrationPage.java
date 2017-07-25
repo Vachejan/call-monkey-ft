@@ -20,7 +20,9 @@ public class AccountRegistrationPage extends Page {
 
     private String strWrongCompanyMassageTag = "<ul class=\"x-list-plain\"><li>Must be present</li></ul>";
 
-    private String strWrongConfirmPasswordTag ="<ul class=\"x-list-plain\"><li>Passwords does not match</li></ul>";
+    private String strWrongConfirmPasswordTag ="<ul class=\"x-list-plain\"><li>Must be present</li></ul>";
+
+    private String strWrongEmailMessage = "<ul class=\"x-list-plain\"><li>Passwords does not match</li></ul>";
 
     @FindBy(css = "div#scrollContainer-targetEl div > div > div > div > input[placeholder=\"Company\"]")
     private WebElement wbCompanyTextBox;
@@ -115,6 +117,10 @@ public class AccountRegistrationPage extends Page {
 
     public void checkIfConfirmPasswordIsWrong() {
         Assert.assertEquals(wbConfirmPassword.getAttribute("data-errorqtip"),strWrongConfirmPasswordTag,"Confirm password filed error is wrong");
+    }
+
+    public void checkIfConfirmPasswordMessigeIsWrong() {
+        Assert.assertEquals(wbConfirmPassword.getAttribute("data-errorqtip"),strWrongEmailMessage,"Must be present");
     }
 }
 

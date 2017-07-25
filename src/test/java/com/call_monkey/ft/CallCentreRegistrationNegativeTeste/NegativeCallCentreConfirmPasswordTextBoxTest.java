@@ -8,54 +8,33 @@ import org.testng.annotations.Test;
  */
 public class NegativeCallCentreConfirmPasswordTextBoxTest extends BaseTest {
 
-    @Test
-    public void negativeCallCentreConfirmPasswordTest_1() throws Exception {
-
-        String strRightNameCompany = "Valod";
+    public void callCentreConfirmPassword(String strCallCentreConfirmPassword){
         String strWrongNameEmail = "Valodik@mail.ru";
-        String strWrongNameConfirmPassword = "";
+        String strRightNameCompany = "Valod";
         String strRightNamePassword = "janValodikjan123";
 
         accountRegistrationPage.open();
         accountRegistrationPage.fillCompnyAddress(strRightNameCompany);
         accountRegistrationPage.fillEmailAddress(strWrongNameEmail);
         accountRegistrationPage.fillPassword(strRightNamePassword);
-        accountRegistrationPage.fillConfirmPassword(strWrongNameConfirmPassword);
+        accountRegistrationPage.fillConfirmPassword(strCallCentreConfirmPassword);
         accountRegistrationPage.clickCreateMyAccountButton();
+    }
+
+    @Test
+    public void negativeCallCentreConfirmPasswordTest_1() throws Exception {
+
+        callCentreConfirmPassword("");
     }
 
     @Test
     public void negativeCallCentreConfirmPasswordTest_2() throws Exception {
-
-
-        String strRightNameCompany = "Valod";
-        String strWrongNameEmail = "Valodik@mail.ru";
-        String strWrongNameConfirmPassword = "janvalodikjan123";
-        String strRightNamePassword = "janValodikjan123";
-
-        accountRegistrationPage.open();
-        accountRegistrationPage.fillCompnyAddress(strRightNameCompany);
-        accountRegistrationPage.fillEmailAddress(strWrongNameEmail);
-        accountRegistrationPage.fillPassword(strRightNamePassword);
-        accountRegistrationPage.fillConfirmPassword(strWrongNameConfirmPassword);
-        accountRegistrationPage.clickCreateMyAccountButton();
+        callCentreConfirmPassword("janvalodikjan123");
     }
 
     @Test
     public void negativeCallCentreConfirmPasswordTest_3() throws Exception {
+        callCentreConfirmPassword("       ");
 
-
-        String strRightNameCompany = "Valod";
-        String strWrongNameEmail = "Valodik@mail.ru";
-        String strRightNamePassword = "janValodikjan123";
-        String strWrongNameConfirmPassword = "       ";
-
-        accountRegistrationPage.open();
-        accountRegistrationPage.fillCompnyAddress(strRightNameCompany);
-        accountRegistrationPage.fillEmailAddress(strWrongNameEmail);
-        accountRegistrationPage.fillPassword(strRightNamePassword);
-        accountRegistrationPage.fillConfirmPassword(strWrongNameConfirmPassword);
-        accountRegistrationPage.clickCreateMyAccountButton();
     }
-
 }
