@@ -6,17 +6,14 @@ import org.testng.annotations.Test;
 /**
  * Created by vache on 7/14/17.
  */
-public class AccointRegistrationTest extends BaseTest {
+public class AccountRegistrationTest extends BaseTest {
 
     @Test
     public void enterAccountRegistrationPage() throws Exception {
 
         String strRightNameCompany = "Valodik";
-        String strWrongName = "123456";
         String strRightNameEmail = "Valodik@mail.ru";
-        String strWrongNameEmail = "]]]@[[[";
         String strRightNamePassword = "janValodikjan123";
-        String strwrongNamepassword = ";;;;;''''.";
 
 
         //Open Account Registration page.
@@ -34,8 +31,17 @@ public class AccointRegistrationTest extends BaseTest {
         //Fill confirm password.
         accountRegistrationPage.fillConfirmPassword(strRightNamePassword);
 
-        //Click Greate my account
+        //Click "create my account"
         accountRegistrationPage.clickCreateMyAccountButton();
+
+        accountRegistrationPage.checkIfCompanyIsWrong();
+
+        accountRegistrationPage.checkIfEmailIsWrong();
+
+        accountRegistrationPage.checkIfPasswordIsWrong();
+
+        accountRegistrationPage.checkIfConfirmPasswordIsWrong();
+
 
     }
 }

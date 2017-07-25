@@ -10,8 +10,13 @@ public class RegistrationNegativeTests extends BaseTest {
 
     @Test
     public void enterRegistrationPage() throws Exception {
-        String strRightName = "Valodik";
-        String strWrongName = "123456";
+
+        String strRightNameCompany = "Valodik";
+        String strRightNamePassword = "janJEKOjan111";
+
+        callCentreRegistrationPage.open();
+        callCentreRegistrationPage.fillEmailAddress(strRightNameCompany);
+        callCentreRegistrationPage.fillPassword(strRightNamePassword);
 
 
 

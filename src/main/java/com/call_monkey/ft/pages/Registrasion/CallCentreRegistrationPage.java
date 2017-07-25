@@ -10,7 +10,19 @@ import org.testng.Assert;
  */
 public class CallCentreRegistrationPage extends Page {
 
-    String strRightTitleCallCentreRegistrationPage = "Sign up in 30 seconds. No credit card required.";
+    private String strRightTitleCallCentreRegistrationPage = "Sign up in 30 seconds. No credit card required.";
+
+    private String strWrongCompanyMassageTag = "<ul class=\"x-list-plain\"><li>Must be present</li></ul>";
+
+    private String strEmailNotFilledMessige = "<ul class=\"x-list-plain\"><li>Must be present</li></ul>";
+
+    private String strWrongEmailMessageTag = "<ul class=\"x-list-plain\"><li>Is not a valid email address</li></ul>";
+
+    private String strWrongPasswordMassageTag = "<ul class=\"x-list-plain\"><li>Password should contain at least 6 characters, including a capital letter and a number</li></ul>";
+
+    private String strWrongConfirmPasswordTag ="<ul class=\"x-list-plain\"><li>Passwords does not match</li></ul>";
+
+    private String strWeongEmailErrorMassige = "id=\"component-1077\">An unknown error occurred. Please verify your entry and try again. If the problem persists, please contact your system administrator.</div>";
 
     @FindBy(css = "div#scrollContainer-targetEl div > div > div > div > input[placeholder=\"Company\"]")
     private WebElement wbCompanyTextBox;
@@ -35,6 +47,9 @@ public class CallCentreRegistrationPage extends Page {
 
     @FindBy(css ="div#scrollContainer-targetEl div.x-container.cm-bg-white.cm-box-shadow.x-box-item.x-container-default.x-box-layout-ct > div > div > label")
     private WebElement wbTitleCallCentreRegistration;
+
+    @FindBy(css ="div#scrollContainer-targetEl div.x-component.cm-feedback-panel.x-box-item.x-component-default")
+    private WebElement wbEmailErrorMasige;
 
     public void open() {
         super.open("#RegisterCallCenter", "CallMonkey");
@@ -85,6 +100,34 @@ public class CallCentreRegistrationPage extends Page {
     //Compare "getTextCallCentreRegistration"
     public void compareTextTitleCallCentreRegistration() {
         Assert.assertEquals(strRightTitleCallCentreRegistrationPage,getTextCallCentreRegistration(),"Call Centre account registration title is wrong");
+    }
+
+    public String getTextErrorMasigeEmail() {
+        return wbEmailErrorMasige.getText();
+    }
+
+    public void compareEmailErrorMasige() {
+        Assert.assertEquals(wbEmailErrorMasige.getAttribute("display: none"),strWeongEmailErrorMassige, "Error masige email is wrong");
+    }
+
+    public void checkIfCompanyIsWrong() {
+        Assert.assertEquals(wbCompanyTextBox.getAttribute("data-errorqtip"),strWrongCompanyMassageTag,"Company filed error masage is wrong");
+    }
+
+    public void checkIfEmailIsWrongMessige(){
+        Assert.assertEquals(wbEmailTextBox.getAttribute("data-errorqtip"), strWrongEmailMessageTag, "Email field error message is wrong");
+    }
+
+    public void chackIfEmailNotFilledMessige() {
+        Assert.assertEquals(wbEmailTextBox.getAttribute("data-errorqtip"), strEmailNotFilledMessige, "Must be present");
+    }
+
+    public void checkIfPasswordIsWrong() {
+        Assert.assertEquals(wbPasswordTextBox.getAttribute("data-errorqtip"),strWrongPasswordMassageTag,"Password field error mesage is wrong");
+    }
+
+    public void checkIfConfirmPasswordIsWrong() {
+        Assert.assertEquals(wbConfirmPassword.getAttribute("data-errorqtip"),strWrongConfirmPasswordTag,"Confirm password filed error is wrong");
     }
 
 }

@@ -11,12 +11,9 @@ public class CallCentreRegistrationTest extends BaseTest {
     @Test
     public void enterCallCentreRegistrationPage() throws Exception {
 
-        String strRightNameCompany = "Valodik";
-        String strWrongName = "123456";
-        String strRightNameEmail = "Valodik@mail.ru";
-        String strWrongNameEmail = "]]]@[[[";
-        String strRightNamePassword = "janValodikjan123";
-        String strwrongNamepassword = ";;;;;''''.";
+        String strRightNameCompany = "Jeko";
+        String strRightNameEmail = "Jeko@mail.ru";
+        String strRightNamePassword = "janJekojan123";
 
         //Open Call Centre Registration page.
         callCentreRegistrationPage.open();
@@ -41,6 +38,18 @@ public class CallCentreRegistrationTest extends BaseTest {
 
         //Compare  Text Title CallCentreRegistration.
         callCentreRegistrationPage.compareTextTitleCallCentreRegistration();
+
+        callCentreRegistrationPage.compareEmailErrorMasige();
+
+        callCentreRegistrationPage.checkIfCompanyIsWrong();
+
+        callCentreRegistrationPage.checkIfEmailIsWrongMessige();
+
+        callCentreRegistrationPage.checkIfPasswordIsWrong();
+
+        callCentreRegistrationPage.checkIfConfirmPasswordIsWrong();
+
+
 
     }
 }

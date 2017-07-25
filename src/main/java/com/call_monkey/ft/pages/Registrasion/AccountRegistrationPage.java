@@ -12,6 +12,16 @@ public class AccountRegistrationPage extends Page {
 
     private String strRightRegistrationTitle = "Sign up in 30 seconds. No credit card required.";
 
+    private String strWrongEmailMessageTag = "<ul class=\"x-list-plain\"><li>Is not a valid email address</li></ul>";
+
+    private String strEmailNotFilledMessige = "<ul class=\"x-list-plain\"><li>Must be present</li></ul>";
+
+    private String strWrongPasswordMassageTag = "<ul class=\"x-list-plain\"><li>Password should contain at least 6 characters, including a capital letter and a number</li></ul>";
+
+    private String strWrongCompanyMassageTag = "<ul class=\"x-list-plain\"><li>Must be present</li></ul>";
+
+    private String strWrongConfirmPasswordTag ="<ul class=\"x-list-plain\"><li>Passwords does not match</li></ul>";
+
     @FindBy(css = "div#scrollContainer-targetEl div > div > div > div > input[placeholder=\"Company\"]")
     private WebElement wbCompanyTextBox;
 
@@ -82,13 +92,31 @@ public class AccountRegistrationPage extends Page {
         return wbTitleRegistration.getText();
     }
 
-    ///Compare "getTextCallCentreRegistration"
+    //Compare "getTextCallCentreRegistration"
     public void compareTextTitleCallCentreRegistration() {
         Assert.assertEquals(strRightRegistrationTitle,getTextCallCentreRegistration(),"Account registration title is wrong");
     }
 
+    public void checkIfEmailIsWrong(){
+        Assert.assertEquals(wbEmailTextBox.getAttribute("data-errorqtip"), strWrongEmailMessageTag, "Email field error message is wrong");
+    }
 
+    public void chackIfEmailNotFilledMessige() {
+        Assert.assertEquals(wbEmailTextBox.getAttribute("data-errorqtip"), strEmailNotFilledMessige, "Must be present");
+    }
 
+    public void checkIfPasswordIsWrong() {
+        Assert.assertEquals(wbPasswordTextBox.getAttribute("data-errorqtip"),strWrongPasswordMassageTag,"Password field error mesage is wrong");
+    }
+
+    public void checkIfCompanyIsWrong() {
+        Assert.assertEquals(wbCompanyTextBox.getAttribute("data-errorqtip"),strWrongCompanyMassageTag,"Company filed error masage is wrong");
+    }
+
+    public void checkIfConfirmPasswordIsWrong() {
+        Assert.assertEquals(wbConfirmPassword.getAttribute("data-errorqtip"),strWrongConfirmPasswordTag,"Confirm password filed error is wrong");
+    }
 }
+
 
 
