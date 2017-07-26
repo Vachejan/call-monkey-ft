@@ -20,7 +20,11 @@ public class CallCentreRegistrationPage extends Page {
 
     private String strWrongPasswordMassageTag = "<ul class=\"x-list-plain\"><li>Password should contain at least 6 characters, including a capital letter and a number</li></ul>";
 
+    private String strWroungPasswordMassageNull = "<ul class=\"x-list-plain\"><li>Must be present</li></ul>";
+
     private String strWrongConfirmPasswordTag ="<ul class=\"x-list-plain\"><li>Passwords does not match</li></ul>";
+
+    private String strConfirmPasswordlIsNull = "<ul class=\"x-list-plain\"><li>Must be present</li></ul>";
 
     private String strWeongEmailErrorMassige = "id=\"component-1077\">An unknown error occurred. Please verify your entry and try again. If the problem persists, please contact your system administrator.</div>";
 
@@ -122,6 +126,10 @@ public class CallCentreRegistrationPage extends Page {
         Assert.assertEquals(wbEmailTextBox.getAttribute("data-errorqtip"), strEmailNotFilledMessige, "Must be present");
     }
 
+    public void checkIfPasswordIsNull() {
+        Assert.assertEquals(wbConfirmPassword.getAttribute("data-errorqtip"),strWroungPasswordMassageNull,"Must be present");
+    }
+
     public void checkIfPasswordIsWrong() {
         Assert.assertEquals(wbPasswordTextBox.getAttribute("data-errorqtip"),strWrongPasswordMassageTag,"Password field error mesage is wrong");
     }
@@ -130,4 +138,7 @@ public class CallCentreRegistrationPage extends Page {
         Assert.assertEquals(wbConfirmPassword.getAttribute("data-errorqtip"),strWrongConfirmPasswordTag,"Confirm password filed error is wrong");
     }
 
+    public void checkIfConfirmPasswordNull() {
+        Assert.assertEquals(wbConfirmPassword.getAttribute("data-errorqtip"), strConfirmPasswordlIsNull,"Must be present");
+    }
 }

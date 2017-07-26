@@ -22,37 +22,44 @@ public class NegativePasswordTextBoxTest extends BaseTest {
     }
 
     @Test
-    public void negativePasswordNameTestEmpatyName() throws Exception {
+    public void negativePasswordNameTestEmpty() throws Exception {
       password("");
+      accountRegistrationPage.checkIfPasswordIsNull();
     }
 
     @Test
-    public void negativePasswordNameTest_1() throws Exception {
-        password("JJjj1 ");
+    public void negativePasswordNameTestShortPassword() throws Exception {
+        password("JJjj1");
+        accountRegistrationPage.checkIfPasswordIsWrong();
     }
 
     @Test
-    public void negativePasswordNameTest_2() throws Exception {
+    public void negativePasswordNameTestOnlyLowerCase() throws Exception {
        password("asdfghjk");
+       accountRegistrationPage.checkIfPasswordIsWrong();
     }
 
     @Test
-    public void negativePasswordNameTest_3() throws Exception {
+    public void negativePasswordNameTestOnlyNumber() throws Exception {
         password("123456789");
+        accountRegistrationPage.checkIfPasswordIsWrong();
     }
 
     @Test
-    public void negativePasswordNameTest_4() throws Exception {
+    public void negativePasswordNameTestNoUpperCase() throws Exception {
         password("janjekojan123");
+        accountRegistrationPage.checkIfPasswordIsWrong();
     }
 
     @Test
-    public void negativePasswordNameTest_5() throws Exception {
+    public void negativePasswordNameTestNoNumber() throws Exception {
         password("JJjjjkkl");
+        accountRegistrationPage.checkIfPasswordIsWrong();
     }
 
     @Test
-    public void negativePasswordNameTest_6() throws Exception {
+    public void negativePasswordNameTestNoLetters() throws Exception {
        password("////***///");
+       accountRegistrationPage.checkIfPasswordIsWrong();
     }
 }

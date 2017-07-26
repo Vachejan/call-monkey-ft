@@ -18,11 +18,13 @@ public class AccountRegistrationPage extends Page {
 
     private String strWrongPasswordMassageTag = "<ul class=\"x-list-plain\"><li>Password should contain at least 6 characters, including a capital letter and a number</li></ul>";
 
+    private String strWroungPasswordMassageNull = "<ul class=\"x-list-plain\"><li>Must be present</li></ul>";
+
     private String strWrongCompanyMassageTag = "<ul class=\"x-list-plain\"><li>Must be present</li></ul>";
 
     private String strWrongConfirmPasswordTag ="<ul class=\"x-list-plain\"><li>Must be present</li></ul>";
 
-    private String strWrongEmailMessage = "<ul class=\"x-list-plain\"><li>Passwords does not match</li></ul>";
+    private String strConfirmPasswordlMessageIsWrong = "<ul class=\"x-list-plain\"><li>Passwords does not match</li></ul>";
 
     @FindBy(css = "div#scrollContainer-targetEl div > div > div > div > input[placeholder=\"Company\"]")
     private WebElement wbCompanyTextBox;
@@ -119,8 +121,12 @@ public class AccountRegistrationPage extends Page {
         Assert.assertEquals(wbConfirmPassword.getAttribute("data-errorqtip"),strWrongConfirmPasswordTag,"Confirm password filed error is wrong");
     }
 
+    public void checkIfPasswordIsNull() {
+        Assert.assertEquals(wbConfirmPassword.getAttribute("data-errorqtip"),strWroungPasswordMassageNull,"Must be present");
+    }
+
     public void checkIfConfirmPasswordMessigeIsWrong() {
-        Assert.assertEquals(wbConfirmPassword.getAttribute("data-errorqtip"),strWrongEmailMessage,"Must be present");
+        Assert.assertEquals(wbConfirmPassword.getAttribute("data-errorqtip"), strConfirmPasswordlMessageIsWrong,"Must be present");
     }
 }
 

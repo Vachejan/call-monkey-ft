@@ -44,5 +44,4 @@ public class NegativeCallCentreCompanyTextBoxTest extends BaseTest {
         callCentreCompanyName("V//**{}]");
         callCentreRegistrationPage.checkIfCompanyIsWrong();
     }
-
 }

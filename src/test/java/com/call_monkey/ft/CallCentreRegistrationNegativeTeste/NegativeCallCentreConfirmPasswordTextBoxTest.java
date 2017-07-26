@@ -22,19 +22,22 @@ public class NegativeCallCentreConfirmPasswordTextBoxTest extends BaseTest {
     }
 
     @Test
-    public void negativeCallCentreConfirmPasswordTest_1() throws Exception {
-
+    public void negativeCallCentreConfirmPasswordTestEmpty() throws Exception {
         callCentreConfirmPassword("");
+        callCentreRegistrationPage.checkIfConfirmPasswordNull();
+
     }
 
     @Test
-    public void negativeCallCentreConfirmPasswordTest_2() throws Exception {
+    public void negativeCallCentreConfirmPasswordTestNoUpperCase() throws Exception {
         callCentreConfirmPassword("janvalodikjan123");
+        callCentreRegistrationPage.checkIfConfirmPasswordIsWrong();
     }
 
     @Test
-    public void negativeCallCentreConfirmPasswordTest_3() throws Exception {
+    public void negativeCallCentreConfirmPasswordTestOnlySpase() throws Exception {
         callCentreConfirmPassword("       ");
+        callCentreRegistrationPage.checkIfConfirmPasswordIsWrong();
 
     }
 }

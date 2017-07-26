@@ -77,5 +77,4 @@ public class NegativeCompanyEmailTextBoxTest extends BaseTest {
         emailAddres("Valodik@mail.ru");
         accountRegistrationPage.checkIfEmailIsWrong();
     }
-
 }

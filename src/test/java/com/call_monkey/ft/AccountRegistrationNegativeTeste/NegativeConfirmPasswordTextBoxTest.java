@@ -21,22 +21,21 @@ public class NegativeConfirmPasswordTextBoxTest extends BaseTest {
         accountRegistrationPage.clickCreateMyAccountButton();
     }
 
-
     @Test
     public void negativeConfirmPasswordTeste_ConfirmePasswordEampty() throws Exception {
         confirmPassword("");
-        accountRegistrationPage.checkIfConfirmPasswordMessigeIsWrong();
-
+        accountRegistrationPage.checkIfPasswordIsNull();
     }
 
     @Test
-    public void negativeConfirmPasswordTeste_() throws Exception {
+    public void negativeConfirmPasswordTesteNoUpperCase() throws Exception {
         confirmPassword("janvalodikjan123");
+        accountRegistrationPage.checkIfConfirmPasswordMessigeIsWrong();
     }
 
     @Test
-    public void negativeConfirmPasswordTeste_1() throws Exception {
+    public void negativeConfirmPasswordTesteOnlySpase() throws Exception {
         confirmPassword(" ");
+        accountRegistrationPage.checkIfConfirmPasswordMessigeIsWrong();
     }
-
 }

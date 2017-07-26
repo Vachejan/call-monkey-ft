@@ -22,43 +22,52 @@ public class NegativeCallCentrePasswordTest extends BaseTest {
     }
 
     @Test
-    public void negativeCallCentrePasswordTest_Eampty() throws Exception {
+    public void negativeCallCentrePasswordTestEmpty() throws Exception {
         callCentrePassword("");
+        callCentreRegistrationPage.checkIfPasswordIsNull();
+
     }
 
     @Test
-    public void negativeCallCentrePasswordTest_1() throws Exception {
+    public void negativeCallCentrePasswordTestOnlySpace() throws Exception {
         callCentrePassword("        ");
+        callCentreRegistrationPage.checkIfPasswordIsWrong();
     }
 
     @Test
-    public void negativeCallCentrePasswordTest_2() throws Exception {
+    public void negativeCallCentrePasswordTestShortPassword() throws Exception {
         callCentrePassword("JJjj1");
+        callCentreRegistrationPage.checkIfPasswordIsWrong();
+
     }
 
     @Test
-    public void negativeCallCentrePasswordTest_3() throws Exception {
+    public void negativeCallCentrePasswordTestOnlyLowerCase() throws Exception {
         callCentrePassword("sdssaqww");
+        callCentreRegistrationPage.checkIfPasswordIsWrong();
     }
 
     @Test
-    public void negativeCallCentrePasswordTest_4() throws Exception {
+    public void negativeCallCentrePasswordTestOnlyNumber() throws Exception {
         callCentrePassword("123456789");
+        callCentreRegistrationPage.checkIfPasswordIsWrong();
     }
 
     @Test
-    public void negativeCallCentrePasswordTest_5() throws Exception {
+    public void negativeCallCentrePasswordTestNoUpperCase() throws Exception {
         callCentrePassword("janjekojan123");
+        callCentreRegistrationPage.checkIfPasswordIsWrong();
     }
 
     @Test
-    public void negativeCallCentrePasswordTest_6() throws Exception {
+    public void negativeCallCentrePasswordTestNoNumber() throws Exception {
         callCentrePassword("JJJjjjkl");
+        callCentreRegistrationPage.checkIfPasswordIsWrong();
     }
 
     @Test
-    public void negativeCallCentrePasswordTest_7() throws Exception {
-        callCentrePassword("/////****777");
+    public void negativeCallCentrePasswordTestNoLetters() throws Exception {
+        callCentrePassword("/////****");
+        callCentreRegistrationPage.checkIfPasswordIsWrong();
     }
-
 }

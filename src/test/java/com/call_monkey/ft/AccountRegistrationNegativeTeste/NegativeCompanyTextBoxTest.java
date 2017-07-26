@@ -36,7 +36,7 @@ public class NegativeCompanyTextBoxTest extends BaseTest {
 
     @Test
     public void negativeCompanyNameTestSpaceName() throws Exception {
-        companyName(" VALOD");
+        companyName("       ");
         accountRegistrationPage.checkIfCompanyIsWrong();
     }
 
@@ -45,5 +45,4 @@ public class NegativeCompanyTextBoxTest extends BaseTest {
         companyName("V..;l{{]");
         accountRegistrationPage.checkIfCompanyIsWrong();
     }
-
 }
