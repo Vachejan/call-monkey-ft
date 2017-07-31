@@ -1,10 +1,15 @@
 package com.call_monkey.ft;
 
 import com.call_monkey.ft.factory.WebDriverFactory;
+import com.call_monkey.ft.pages.ListAm.ListAmLoginPage;
+import com.call_monkey.ft.pages.ListAm.ListRegistrationPage;
+import com.call_monkey.ft.pages.ListAm.ListUploImg;
+import com.call_monkey.ft.pages.ListAm.Refresh;
 import com.call_monkey.ft.pages.Login.LoginPage;
 import com.call_monkey.ft.pages.PageBuilder;
 import com.call_monkey.ft.pages.Registrasion.AccountRegistrationPage;
 import com.call_monkey.ft.pages.Registrasion.CallCentreRegistrationPage;
+import com.call_monkey.ft.pages.Html5Book.Html5BookRuHomePage;
 import com.call_monkey.ft.utils.SauceLabsListener;
 import com.saucelabs.common.SauceOnDemandAuthentication;
 import com.saucelabs.common.SauceOnDemandSessionIdProvider;
@@ -30,7 +35,11 @@ public abstract class BaseTest implements SauceOnDemandSessionIdProvider, SauceO
     public LoginPage loginPage;
     public AccountRegistrationPage accountRegistrationPage;
     public CallCentreRegistrationPage callCentreRegistrationPage;
-
+    public Html5BookRuHomePage html5BookRuHomePage;
+    public ListRegistrationPage listRegistrationPage;
+    public ListAmLoginPage listAmLoginPage;
+    public ListUploImg listUploImg;
+    public Refresh refresh;
     private   ThreadLocal<WebDriver> driver;
 
 
@@ -72,7 +81,11 @@ public abstract class BaseTest implements SauceOnDemandSessionIdProvider, SauceO
         loginPage = PageBuilder.page(LoginPage.class, webDriver()).build();
         accountRegistrationPage = PageBuilder.page(AccountRegistrationPage.class, webDriver()).build();
         callCentreRegistrationPage = PageBuilder.page(CallCentreRegistrationPage.class, webDriver()).build();
-
+        html5BookRuHomePage = PageBuilder.page(Html5BookRuHomePage.class, webDriver()).build();
+        listRegistrationPage = PageBuilder.page(ListRegistrationPage.class, webDriver()).build();
+        listAmLoginPage = PageBuilder.page(ListAmLoginPage.class, webDriver()).build();
+        listUploImg = PageBuilder.page(ListUploImg.class, webDriver()).build();
+        refresh = PageBuilder.page(Refresh.class, webDriver()).build();
     }
 
 

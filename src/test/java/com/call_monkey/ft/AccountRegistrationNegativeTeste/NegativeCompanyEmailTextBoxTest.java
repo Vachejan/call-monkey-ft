@@ -13,7 +13,6 @@ public class NegativeCompanyEmailTextBoxTest extends BaseTest {
     public void emailAddres (String strEmailAddres){
         String strRightNameCompany = "Valod";
         String strRightNamePassword = "janValodikjan123";
-        String strWrongNameEmail = "Valodik@mail.ru";
 
         accountRegistrationPage.open();
         accountRegistrationPage.fillCompnyAddress(strRightNameCompany);
@@ -31,7 +30,7 @@ public class NegativeCompanyEmailTextBoxTest extends BaseTest {
     }
 
     @Test
-    public void negativeCompanyEsmailTestUsedEmail() throws Exception {
+    public void negativeCompanyEmailTestOneSpace() throws Exception {
         emailAddres(" ");
         accountRegistrationPage.checkIfEmailIsWrong();
     }
@@ -49,13 +48,13 @@ public class NegativeCompanyEmailTextBoxTest extends BaseTest {
     }
 
     @Test
-    public void negativeCompanyEmailTestOnlyDomen() throws Exception {
+    public void negativeCompanyEmailTestOnlyDomain() throws Exception {
         emailAddres("@mail.ru");
         accountRegistrationPage.checkIfEmailIsWrong();
     }
 
     @Test
-    public void negativeCompanyEmailTestNoDomen() throws Exception {
+    public void negativeCompanyEmailTestNoDomain() throws Exception {
         emailAddres("jeko");
         accountRegistrationPage.checkIfEmailIsWrong();
     }

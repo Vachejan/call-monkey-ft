@@ -93,4 +93,3 @@ public class LoginPage extends Page {
         wbInloggenMetFacebook.click();
     }
 }
-

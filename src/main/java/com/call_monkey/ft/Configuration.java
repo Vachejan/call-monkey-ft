@@ -10,7 +10,7 @@ public class Configuration {
 
     private static final String DEFAULT_BROWSER = "chrome";
     private static final String DEFAULT_BROWSER_VERSION = "latest";
-    private static final String DEFAULT_SITE_URL = "http://cm-test.sflpro.com:8888/";
+    private static final String DEFAULT_SITE_URL = "https://www.list.am/";
 
     private String username;
 

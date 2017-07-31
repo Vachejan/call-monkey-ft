@@ -24,6 +24,7 @@ public class NegativeCallCenterEmailTextBoxTest extends BaseTest {
     public void negativeCompanyEmailTestEmailNameEmpaty() throws Exception {
         companyEmailName("");
         callCentreRegistrationPage.chackIfEmailNotFilledMessige();
+
     }
 
     @Test
